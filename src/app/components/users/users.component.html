@@ -1,0 +1,8 @@
+<h1>Tour of users ({{mode}})</h1>
+<h3>users:</h3>
+<ul>
+  <li *ngFor="let user of users">{{user.display_name}}</li>
+</ul>
+<!-- <label>New user name: <input #newuserName /></label>
+<button (click)="addUser(newuserName.value); newuserName.value=''">Add user</button> -->
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
