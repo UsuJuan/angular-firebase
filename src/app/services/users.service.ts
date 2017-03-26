@@ -7,7 +7,7 @@ import { User } from '../interfaces/user';
 
 @Injectable()
 export class UsersService {
-	private usersUrl = 'http://localhost:8000/usuarios/';  // URL to web API
+	private usersUrl = 'http://localhost:8000/api/dishes/';  // URL to web API
 	constructor (private http: Http) {}
 
 	getUsers (): Observable<User[]> {
