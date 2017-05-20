@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+// tag input
+
 // services
 import { FirebaseService } from './services/firebase.service';
 import { UsersService } from './services/users.service'
@@ -16,6 +18,7 @@ import { ListingComponent } from './components/listing/listing.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { EditListingComponent } from './components/edit-listing/edit-listing.component';
 import { UsersComponent } from './components/users/users.component';
+import { TagsComponent } from './components/tags/tags.component';
 
 // Firebase Config
 export const firebaseConfig = {
@@ -36,7 +39,8 @@ const appRoutes: Routes = [
   {path:'listings', component:ListingsComponent},
   {path:'listing/:id', component:ListingComponent},
   {path:'add-listing', component:AddListingComponent},
-  {path:'users', component:UsersComponent}
+  {path:'users', component:UsersComponent},
+  {path:'tags', component:TagsComponent}
 ]
 
 @NgModule({
@@ -48,7 +52,8 @@ const appRoutes: Routes = [
 	ListingComponent,
 	AddListingComponent,
 	EditListingComponent,
-	UsersComponent
+	UsersComponent,
+	TagsComponent
   ],
   imports: [
 	BrowserModule,

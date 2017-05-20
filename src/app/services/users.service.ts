@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -7,13 +7,27 @@ import { User } from '../interfaces/user';
 
 @Injectable()
 export class UsersService {
-	private usersUrl = 'http://localhost:8000/api/dishes/';  // URL to web API
+	headers: Headers;
+	options: RequestOptions;
+	private usersUrl = 'https://api.github.com/search/users?q=';  // URL to web API
 	constructor (private http: Http) {}
 
-	getUsers (): Observable<User[]> {
-		return this.http.get(this.usersUrl)
+	getUsers (userTerm): Observable<User[]> {
+		return this.http.get(this.usersUrl+userTerm)
 					.map(res => res.json())
 					.catch(this.handleError);
+	}
+
+	insertUser (data): Observable<Response> {
+		var payload = new FormData();
+		payload.append("name", data['name']);
+		payload.append('description', data['description']);
+		payload.append('multimedia', data['image']['file']);
+		this.headers = new Headers();
+		this.options = new RequestOptions({ headers: this.headers });
+		return this.http.post(this.usersUrl, payload, this.options)
+						.map(res => res.json())
+						.catch(this.handleError);
 	}
 	
 	private handleError (error: Response | any) {

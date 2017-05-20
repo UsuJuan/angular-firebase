@@ -1,8 +1,36 @@
 <h1>Tour of users ({{mode}})</h1>
-<h3>users:</h3>
-<ul>
-  <li *ngFor="let user of users">{{user.name}}</li>
-</ul>
-<!-- <label>New user name: <input #newuserName /></label>
-<button (click)="addUser(newuserName.value); newuserName.value=''">Add user</button> -->
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+<h3>TAGS</h3>
+<div class="form-group">
+	<label>Buscar</label>
+	<div class="tags">
+		<ul class="list-tags">
+			<li *ngFor="let tag of tags" class="tag">
+				{{tag.name}}
+				<span (click)="deleteTag(tag)" class="delete-tag">X</span>
+			</li>
+		</ul>
+		<input class="input-tag" type="text" (keyup)="onKey($event)" [(ngModel)]="searchText" name="searchText" #searchTextx >
+	</div>
+	<div *ngIf="users; else loading">
+		<!--<user-profile *ngFor="let user of users; count as count" [user]="user">
+		</user-profile>
+		<div>{{count}} total users</div> -->
+		<ul class="list-group">
+			<li *ngFor="let user of users.items" class="list-group-item">
+				<a (click)="selectItem(user)" >{{user.login}}</a>
+			</li>
+		</ul>
+		<!-- <label>New user name: <input #newuserName /></label>
+		<button (click)="addUser(newuserName.value); newuserName.value=''">Add user</button> -->
+		<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+	</div>
+	<ng-template #loading>Cargando usuarios...</ng-template>
+</div>
+<div class="form-group">
+	<input id="imagen" name="imagen" [(ngModel)]="imagen" type="file" (change)="changeListener($event)" >
+</div>
+<div class="form-group">
+	<label>Title</label>
+	<input class="form-control" type="text" [(ngModel)]="title" name="title" required>
+</div>
+<button (click)="sendImage()" >enviar</button>

@@ -1,0 +1,32 @@
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+}
+.list-tags {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+}
+.tag {
+	border: 1px solid #1a6ecc;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 2px;
+}
+.delete-tag {
+	color: red;
+	margin-left: 4px;
+}
+.delete-tag:hover{
+	cursor: pointer;
+}
+.input-tag {
+	border: 0;
+	border-bottom: 1px solid #1a6ecc;
+	outline: 0;
+	width: 100%;
+	padding: 5px;
+	margin-top: 5px;
+}
